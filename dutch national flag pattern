@@ -1,0 +1,99 @@
+
+Airport Security Risk Sorter
+----------------------------
+
+🧩 Problem Statement:
+At an airport security checkpoint, personnel have seized various items from travellers.
+Each item has a risk severity value:
+- 0: Low risk
+- 1: Medium risk
+- 2: High risk
+
+All items are placed randomly into a box (represented as an array of integers).
+Your task is to sort this array so that:
+- All items with risk 0 appear first,
+- Followed by items with risk 1,
+- Then risk 2 at the end.
+
+🎯 Objective:
+Sort the array in increasing order of risk severity using an optimal algorithm.
+
+🔄 Approach:
+This is a classic Dutch National Flag problem.
+We use a three-pointer method (low, mid, high) to sort the array in a single traversal:
+- If the element is 0: swap it to the front (low pointer)
+- If it's 1: leave it (move mid)
+- If it's 2: swap it to the end (high pointer)
+
+This algorithm works in:
+- ✅ O(n) time complexity
+- ✅ O(1) space complexity (in-place sorting)
+
+📥 Input:
+- An integer N (number of items)
+- Followed by N integers (each either 0, 1, or 2)
+
+📤 Output:
+- The sorted risk levels, space-separated
+
+🔁 Example:
+
+Input:
+7
+1
+0
+2
+0
+1
+0
+2
+
+Output:
+0 0 0 1 1 2 2
+
+👨‍💻 Author: Rathika R (for GitHub documentation)
+"""
+
+def sort_risk_levels(arr):
+    """
+    Sorts an array of risk values (0, 1, 2) using the Dutch National Flag algorithm.
+    
+    Args:
+    arr (list of int): Array containing only 0s, 1s, and 2s.
+
+    Returns:
+    list of int: Sorted array with all 0s first, then 1s, then 2s.
+    """
+    low = 0
+    mid = 0
+    high = len(arr) - 1
+
+    # Traverse the array and sort it in place
+    while mid <= high:
+        if arr[mid] == 0:
+            arr[low], arr[mid] = arr[mid], arr[low]
+            low += 1
+            mid += 1
+        elif arr[mid] == 1:
+            mid += 1
+        else:  # arr[mid] == 2
+            arr[mid], arr[high] = arr[high], arr[mid]
+            high -= 1
+
+    return arr
+
+# ------------------ Input & Output Section ------------------
+
+# Read the number of items
+n = int(input("Enter the number of items (N): "))
+
+# Read N risk values (each on a new line)
+print(f"Enter {n} risk values (0, 1, or 2):")
+arr = [int(input()) for _ in range(n)]
+
+# Sort the risk levels using the function
+sorted_arr = sort_risk_levels(arr)
+
+# Print the sorted array
+print("Sorted risk levels:")
+print(*sorted_arr)
