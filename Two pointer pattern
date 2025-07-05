@@ -1,0 +1,50 @@
+# 🚀 Two Pointer Pattern – DSA Guide
+
+The **Two Pointer** technique is one of the most powerful and efficient strategies in Data Structures and Algorithms (DSA). It's especially useful when dealing with **sorted arrays**, **string manipulation**, or **in-place operations**.
+
+---
+
+## 📌 What is the Two Pointer Technique?
+
+The Two Pointer Pattern involves using two variables (pointers), typically indices, to iterate through data structures from opposite ends or the same direction to efficiently solve problems that might otherwise need nested loops.
+
+---
+
+## ✅ When to Use Two Pointers
+
+- Arrays or strings are **sorted**
+- Finding **pairs/triplets** with a specific sum or difference
+- Reversing or comparing arrays or strings
+- Detecting **palindromes**
+- **In-place operations** to save memory
+- Problems involving **maximum/minimum constraints**
+
+---
+
+## 🧠 General Template
+
+```python
+left = 0
+right = len(arr) - 1
+
+while left < right:
+    # do something with arr[left] and arr[right]
+    if condition:
+        left += 1
+    else:
+        right -= 1
+
+Reverse an Array In-Place
+python
+def reverse_array(arr):
+    left = 0
+    right = len(arr) - 1
+
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+
+    return arr
+📌 Input: [1, 2, 3, 4, 5]
+✅ Output: [5, 4, 3, 2, 1
