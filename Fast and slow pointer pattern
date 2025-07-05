@@ -1,0 +1,52 @@
+🐢🏃 Fast and Slow Pointer Pattern – DSA Guide
+🔍 What Is It?
+The Fast and Slow Pointer pattern uses two pointers that move at different speeds through a data structure (usually a linked list or array). It's commonly used to detect cycles, find midpoints, or detect special structures like palindromes.
+
+✅ When to Use Fast and Slow Pointers:
+Detecting a cycle in a linked list
+
+Finding the middle of a linked list
+
+Detecting if a number is a happy number
+
+Checking if a linked list is a palindrome
+
+Finding the starting point of a cycle
+
+🧠 General Template
+python
+Copy
+Edit
+slow = head
+fast = head
+
+while fast and fast.next:
+    slow = slow.next          # move one step
+    fast = fast.next.next     # move two steps
+
+    if slow == fast:
+        return True
+🔹 Classic Problems with Explanations
+1️⃣ Detect Cycle in a Linked List (LeetCode #141)
+Problem: Determine if a linked list has a cycle (i.e., a node points back to a previous node).
+
+✅ Code:
+python
+Copy
+Edit
+def has_cycle(head):
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            return True  # They met, so there is a cycle
+
+    return False  # fast reached the end → no cycle
+
+1 → 2 → 3 → 4
+      ↑     ↓
+      ← ← ←
