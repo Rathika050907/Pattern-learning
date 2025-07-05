@@ -1,0 +1,56 @@
+# 🚀 Sliding Window Pattern – DSA Guide
+
+The **Sliding Window** technique is a powerful method used for problems involving **subarrays**, **substrings**, or **continuous ranges**. It helps reduce time complexity from `O(n²)` to `O(n)` in many cases.
+
+---
+
+## 📌 What is the Sliding Window Technique?
+
+It involves creating a **window (range)** which slides over a subset of data (like an array or string) to compute **max, min, sum, or count** without recalculating the whole window each time.
+
+---
+
+## ✅ When to Use
+
+- You’re working with **contiguous sequences** (arrays or strings)
+- The problem involves **"maximum/minimum/sum of subarray/substring"**
+- You need to find **fixed or variable length** results efficiently
+
+---
+
+## 🔍 Sliding Window Types
+
+| Type              | Description                                  |
+|-------------------|----------------------------------------------|
+| **Fixed Size**    | Window has a constant size `k`               |
+| **Variable Size** | Window expands/shrinks based on a condition  |
+
+---
+
+## 🧠 General Templates
+
+### 🟩 Fixed-Size Window:
+```python
+for i in range(len(arr)):
+    window_sum += arr[i]
+    if i >= k - 1:
+        result.append(window_sum)
+        window_sum -= arr[i - (k - 1)]
+
+
+Given an array, find the max sum of any subarray of size k.
+def max_sum_subarray(arr, k):
+    max_sum = 0
+    window_sum = 0
+
+    for i in range(len(arr)):
+        window_sum += arr[i]
+
+        if i >= k - 1:
+            max_sum = max(max_sum, window_sum)
+            window_sum -= arr[i - (k - 1)]
+
+    return max_sum
+📌 Input: [2, 1, 5, 1, 3, 2], k = 3
+✅ Output: 9
+
